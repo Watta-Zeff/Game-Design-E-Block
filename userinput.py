@@ -24,11 +24,14 @@ os.system('cls')
 # myNumber = 9
 
 myNumber=random.randint(1,10)
+myNumber2=random.randint(1,50)
+MyNumber3=random.randint(1-100)
 print("###############################################################")
 print("#                                                             #")
 print("#                       Guess a number                        #")
 print("#                                                             #")
 print("###############################################################")
+
 GameOn=True
 while(GameOn):
     UserGuess=int(input("guess a number from 1-10 "))
