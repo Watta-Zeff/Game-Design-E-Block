@@ -9,7 +9,7 @@ Choice3='c'
 
 myNumber=random.randint(1,10)
 myNumber2=random.randint(1,50)
-myNumber3=random.randint(1-100)
+myNumber3=random.randint(1,100)
 
 GameMenu=GameOn=True
 
@@ -27,26 +27,34 @@ print("c = 1-100")
 while(GameMenu):
     userChoice=(input("Choose a difficulty "))
 
-    if userChoice =='a'(input("guess a number from 1-10 "))
-    if myNumber ==userChoice:
-        print("You guessed it!")
-        GameOn=False
-    else:
-        print("you got it wrong :(")
-print("The number to guess was "+ str(myNumber))
+    if userChoice =='a':
+        usernum = int(input("guess a number from 1-10 "))
+        if usernum == myNumber:
+            print("You guessed it!")
+            break
+            
+        else:
+            print("you got it wrong :(")
+            print("The number to guess was "+ str(myNumber))
+            break
 
-    if userChoice =='b'(input("guess a number from 1-50 "))
-    if myNumber2 ==userChoice:
-        print("You guessed it!")
-        GameOn=False
-    else:
-        print("you got it wrong :(")
-    print("The number to guess was "+ str(myNumber))
+    if userChoice =='b':
+        usernum = int(input("guess a number from 1-50 "))
+        if usernum == myNumber2:
+            print("You guessed it!")
+            break
 
-    if userChoice =='c'(input("guess a number from 1-100 "))
-    if myNumber3 ==userChoice:
-        print("You guessed it!")
-        GameOn=False
-    else:
-        print("you got it wrong :(")
-    print("The number to guess was "+ str(myNumber))
+        else:
+            print("you got it wrong :(")
+            print("The number to guess was "+ str(myNumber2))
+            break
+    if userChoice =='c':
+        usernum = int(input("guess a number from 1-100 "))
+        if myNumber3 ==userChoice:
+            print("You guessed it!")
+            break
+
+        else:
+            print("you got it wrong :(")
+            print("The number to guess was "+ str(myNumber3))
+            break
