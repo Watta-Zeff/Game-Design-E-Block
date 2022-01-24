@@ -17,15 +17,16 @@ print("###############################################################")
 print("#                                                             #")
 print("#                       Guess a number                        #")
 print("#                                                             #")
+print("#                          a = 1-10                           #")
+print("#                          b = 1-50                           #")    
+print("#                          c = 1-100                          #")
+print("#                       Choose a difficulty                   #")
 print("###############################################################")
 
-print("a = 1-10")
-print("b = 1-50")
-print("c = 1-100")
 
 
 while(GameMenu):
-    userChoice=(input("Choose a difficulty "))
+    userChoice=(input("choice: "))
 
     if userChoice =='a':
         usernum = int(input("guess a number from 1-10 "))
