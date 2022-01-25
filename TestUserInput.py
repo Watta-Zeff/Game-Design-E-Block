@@ -1,32 +1,39 @@
 import os, random
 os.system('cls')
 
-Choice1='a'
-Choice2='b'
-Choice3='c'
-
-
 
 myNumber=random.randint(1,10)
 myNumber2=random.randint(1,50)
 myNumber3=random.randint(1,100)
 
 GameMenu=GameOn=True
+userChoice=''
+def menu():
 
-print("###############################################################")
-print("#                                                             #")
-print("#                       Guess a number                        #")
-print("#                                                             #")
-print("#                          a = 1-10                           #")
-print("#                          b = 1-50                           #")    
-print("#                          c = 1-100                          #")
-print("#                       Choose a difficulty                   #")
-print("###############################################################")
+    print("###############################################################")
+    print("#                                                             #")
+    print("#                       Guess a number                        #")
+    print("#                                                             #")
+    print("#                          a = 1-10                           #")
+    print("#                          b = 1-50                           #")    
+    print("#                          c = 1-100                          #")
+    print("#                                                             #")
+    print("#                      Choose a difficulty                    #")
+    print("###############################################################")
 
+menu()
+
+check=True
+while check:
+    try:
+        userChoice=(input("choice: "))
+        if userChoice =='a' or userChoice=='b' or userChoice =='c':
+            check = False
+    except ValueError:
+        print("Sorry, wrong choice, please enter a number 1 to 3 only >:(")
 
 
 while(GameMenu):
-    userChoice=(input("choice: "))
 
     if userChoice =='a':
         usernum = int(input("guess a number from 1-10 "))
@@ -59,3 +66,7 @@ while(GameMenu):
             print("you got it wrong :(")
             print("The number to guess was "+ str(myNumber3))
             break
+
+os.system('cls')
+
+menu()
