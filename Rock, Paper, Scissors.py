@@ -15,9 +15,13 @@
 #ask user to pick rock paper or scissors
 
 #if user input = computernum restart 
+
 #if user input = paper and computernum = rock user win
+
 #if user input = rock and computernum = scissors user win
+
 #if user input = paper and computernum = scissors user loses
+
 #if user input =  and computernum = rock user win
 
 import os, random
@@ -26,8 +30,22 @@ import time
 
 os.system('cls')
 
-def menu():
 
+print("***********************************")
+print("*                                 *")
+print("*             Goodbye             *")
+print("*                :(               *")
+print("***********************************")
+
+
+
+
+
+
+
+
+def menu():
+    print("                                                                     ")
     print("                 $$$                                                 ")
     print("  ___________   $___$                                                ")
     print("  ____________   $$$                                                 ")
@@ -75,38 +93,73 @@ computernum = random.randint(1,3)
 
 GameOn=True
 
-os.system('cls')
 
 while(GameOn):
 
-    userchoice=int(input("Make Your Choice: "))
-
-while(GameOn):
+    userchoice=input("Make Your Choice: ")
 
     if 'pap' in userchoice:
         userchoice =int(1)
-    if 'sci' in userchoice:
+    elif 'sci' in userchoice:
         userchoice =int(2)
-    if 'roc' in userchoice:
+    elif 'roc' in userchoice:
         userchoice =int(3)
 
-if userchoice == 1 and computernum == 1:
-    print("User Tie")
-if userchoice == 1 and computernum == 2:
-    print("User Lose")
-if userchoice == 1 and computernum == 3:
-    print("User Win")
+    if userchoice == 1 and computernum == 1:
+        print("User Tie")
+        time.sleep(2)
+        
+    if userchoice == 1 and computernum == 2:
+        print("Paper Lose")
+        time.sleep(2)
+        
+    if userchoice == 1 and computernum == 3:
+        print("Paper Wins")
+        time.sleep(2)
+        
 
-if userchoice == 2 and computernum == 2:
-    print("User Tie")
-if userchoice == 2 and computernum == 3:
-    print("User Lose")
-if userchoice == 2 and computernum == 1:
-    print("User Win")
+    if userchoice == 2 and computernum == 2:
+        print("User Tie")
+        time.sleep(2)
+        
+    if userchoice == 2 and computernum == 3:
+        print("Scissors Lose")
+        time.sleep(2)
+        
+    if userchoice == 2 and computernum == 1:
+        print("Scissors Wins")
+        time.sleep(2)
+        
 
-if userchoice == 3 and computernum == 3:
-    print("User Tie")
-if userchoice == 3 and computernum == 1:
-    print("User Lose")
-if userchoice == 3 and computernum == 2:
-    print("User Win")
+    if userchoice == 3 and computernum == 3:
+        print("User Tie")
+        time.sleep(2)
+        
+    if userchoice == 3 and computernum == 1:
+        print("Rock Loses to Paper")
+        time.sleep(2)
+        
+    if userchoice == 3 and computernum == 2:
+        print("Rock Wins Over Scissors")
+        time.sleep(2)
+        
+    os.system('cls')
+
+    print("###############################################################")
+    print("#                                                             #")
+    print("#                                                             #")
+    print("#                         play again?                         #")
+    print("#                                                             #")
+    print("#                                                             #")    
+    print("#                      Y (Yes) or N (No)                      #")
+    print("#                                                             #")
+    print("#                                                             #")
+    print("###############################################################")
+
+    endchoice=input("Make Your Choice: ")
+    if 'Y' in endchoice:
+        computernum = random.randint(1,3)
+        os.system('cls')
+        (menu)
+    else:
+        GameOn=False
