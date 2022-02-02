@@ -56,4 +56,3 @@ gameOn=True
 #looping with condition
 
 counter=0
-while gameOn:

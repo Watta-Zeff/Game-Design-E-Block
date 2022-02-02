@@ -27,3 +27,6 @@ print('expert' not in MyStatement)
 #find() will return the index of the character you are looking for.
 INDEX= MyName.find(" ")
 print(INDEX)
+wordLen=len(MyName)
+print(wordLen) #your last index is len -1
+print(MyName[8])
