@@ -4,6 +4,8 @@
 # Has many functions
 import os
 
+import os, random
+
 os.system('cls')
 
 MyName= 'Zeffaniah Knight'
@@ -16,10 +18,11 @@ blah blah blagggg
 what ever
 ever"""
 
+
 print (MyName[10])
 print (MyStatement)
 
-print ("My last name begins with " +MyName[6])
+print ("My last name begins with " +MyName[10])
 
 if 'blah' in MyStatement:
     print('true')
@@ -42,3 +45,34 @@ for i in range(wordLen-1):
         print(i, end=", ")
 print("")
 print("done")
+
+# MyStatement=MyStatement.lower()
+# print(MyStatement)
+# print("Thank you, the letter is "+ letter)
+# if letter in MyStatement:
+#     print ("Great")
+
+check=True
+while check:
+    letter=input("Dear user, please give us a nice letter ")
+#alpha is a function that makes sure that the input is only letters.
+    if len(letter)>1 or not letter.isalpha():
+        print("Bad")
+    else:
+        check=False
+print("ready to play the game")
+
+
+
+for elem in MyName:
+    print(elem, end=" ")
+guess=random.choice(MyName)
+print(guess)
+words=["Radio", "Clues", "suite", "peter", "robot"]
+word=random.choice(MyName)
+print(word)
+for i in range(len(word)):
+    if letter == word[i]:
+        print(letter, end= " ")
+    else:
+        print("_", end=" ")
