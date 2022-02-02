@@ -24,9 +24,21 @@ print ("My last name begins with " +MyName[6])
 if 'blah' in MyStatement:
     print('true')
 print('expert' not in MyStatement)
+
 #find() will return the index of the character you are looking for.
+
 INDEX= MyName.find(" ")
+
 print(INDEX)
 wordLen=len(MyName)
 print(wordLen) #your last index is len -1
+
 print(MyName[8])
+
+#for loop in range 0 to limit
+
+for i in range(wordLen-1):
+    if "a" in MyName[i]:
+        print(i, end=", ")
+print("")
+print("done")
