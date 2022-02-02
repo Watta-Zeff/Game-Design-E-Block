@@ -24,3 +24,6 @@ print ("My last name begins with " +MyName[6])
 if 'blah' in MyStatement:
     print('true')
 print('expert' not in MyStatement)
+#find() will return the index of the character you are looking for.
+INDEX= MyName.find(" ")
+print(INDEX)

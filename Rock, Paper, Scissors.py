@@ -127,20 +127,20 @@ while(GameOn):
         time.sleep(2)
         
     if userchoice == 2 and computernum == 1:
-        print("Scissors Wins")
+        print(" Yay, Scissors Beats Paper")
         time.sleep(2)
         
 
     if userchoice == 3 and computernum == 3:
-        print("User Tie")
+        print(" Wow, Rock Ties Nobody Wins ")
         time.sleep(2)
         
     if userchoice == 3 and computernum == 1:
-        print("Rock Loses to Paper")
+        print(" Sorry, Rock Loses to Paper Computer Wins. ")
         time.sleep(2)
         
     if userchoice == 3 and computernum == 2:
-        print("Rock Wins Over Scissors")
+        print(" Yay, Rock Beats Scissors User Wins. ")
         time.sleep(2)
         
     os.system('cls')
