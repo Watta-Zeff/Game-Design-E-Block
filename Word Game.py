@@ -11,17 +11,54 @@ import os, random
 os.system('cls')
 word=""
 guess=""
+
+def menu():
+    print("*******************************************************")
+    print("*                                                     *")
+    print("*                                                     *")
+    print("*                 Word Guessing Game                  *")
+    print("*                                                     *")
+    print("*                    Choose from                      *")
+    print("*                       Fruits                        *")
+    print("*                       Animals                       *")
+    print("*                  or Computer Parts                  *")
+    print("*                                                     *")
+    print("*******************************************************")
+
+
+
+
+
+
 def selectWord():
     global word
     fruits=["bananas", "grapes", "waterMelon", 'blueberries', 'apples', "blackberries",
     "papaya", 'oranges', 'tomatoes', 'mangos', 'kiwis','strawberries' ]
+    animals=["dog", "cat", "crocodile", "squid", "monkey", "shark", "spider", "snake",
+    "snail", "lion", "salmon", "gorilla", "horse", "cow", "lizard" ]
+    computerparts=["motherboard", "battery", "wires", "cpu", "fans", "chassis", "rgb",
+    "ram", "storage", "computer" ]
 
     # size= len(fruits)
     # randy= random.randint(0,size)
     # print(randy)
     # word=fruits[randy]
     # print(word)
-    word=random.choice(fruits)
+    check = True
+    while check:
+        try:
+            choice= int(input("Choice: "))
+            if choice > 0 and choice < 4:
+                check = False
+        except ValueError:
+            print("Sorry try again")
+
+        if choice==1:
+            word=random.choice(fruits)
+        elif choice==2:
+            word=random.choice(animals)
+        elif choice ==3:
+            word=random.choice(computerparts)
 
 def guessFunction():
     global guess
@@ -40,6 +77,7 @@ gameOn=True
 tries=0
 letterGuessed=""
 selectWord()
+menu()
 while gameOn:
     
     guessFunction()
@@ -59,5 +97,14 @@ while gameOn:
         #playGame() ask if they want to play again
     if countLetter == len(word):
         print ("\nyou guessed! ")
-        #Calculate score
-        #playGame()
+def endgame():
+    print("*****************************************")
+    print("*                                       *")
+    print("*                                       *")
+    print("*             Game----Over              *")
+    print("*                                       *")
+    print("*                                       *")
+    print("*                                       *")
+    print("*                                       *")
+    print("*                                       *")
+    print("*****************************************")
