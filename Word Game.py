@@ -97,11 +97,12 @@ while gameOn:
         #playGame() ask if they want to play again
     if countLetter == len(word):
         print ("\nyou guessed! ")
+
 def endgame():
     print("*****************************************")
     print("*                                       *")
     print("*                                       *")
-    print("*             Game----Over              *")
+    print("*             Game  Over                *")
     print("*                                       *")
     print("*                                       *")
     print("*                                       *")
