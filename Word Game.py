@@ -19,10 +19,13 @@ def menu():
     print("*                 Word Guessing Game                  *")
     print("*                                                     *")
     print("*                    Choose from                      *")
-    print("*                       Fruits                        *")
-    print("*                       Animals                       *")
-    print("*                  or Computer Parts                  *")
+    print("*                   1. Fruits                         *")
+    print("*                   2. Animals                        *")
+    print("*                   3.Computer Parts                  *")
     print("*                                                     *")
+    print("*                   ScoreBoard:                       *")
+    print("*                                                     *")
+    print("*                   4.Exit Game                       *")
     print("*******************************************************")
 
 
@@ -32,33 +35,36 @@ def menu():
 
 def selectWord():
     global word
-    fruits=["bananas", "grapes", "waterMelon", 'blueberries', 'apples', "blackberries",
+fruits=["bananas", "grapes", "waterMelon", 'blueberries', 'apples', "blackberries",
     "papaya", 'oranges', 'tomatoes', 'mangos', 'kiwis','strawberries' ]
-    animals=["dog", "cat", "crocodile", "squid", "monkey", "shark", "spider", "snake",
+animals=["dog", "cat", "crocodile", "squid", "monkey", "shark", "spider", "snake",
     "snail", "lion", "salmon", "gorilla", "horse", "cow", "lizard" ]
-    computerparts=["motherboard", "battery", "wires", "cpu", "fans", "chassis", "rgb",
+computerparts=["motherboard", "battery", "wires", "cpu", "fans", "chassis", "rgb",
     "ram", "storage", "computer" ]
 
-    # size= len(fruits)
-    # randy= random.randint(0,size)
-    # print(randy)
-    # word=fruits[randy]
-    # print(word)
-    check = True
-    while check:
-        try:
-            choice= int(input("Choice: "))
-            if choice > 0 and choice < 4:
-                check = False
-        except ValueError:
-            print("Sorry try again")
+# size= len(fruits)
+# randy= random.randint(0,size)
+# print(randy)
+# word=fruits[randy]
+# print(word)
+menu()
+check = True
+while check:
+    try:
+        choice= int(input("Choice: "))
+        if choice > 0 and choice < 5:
+            check = False
+    except ValueError:
+        print("Sorry try again")
 
-        if choice==1:
-            word=random.choice(fruits)
-        elif choice==2:
-            word=random.choice(animals)
-        elif choice ==3:
-            word=random.choice(computerparts)
+if choice==1:
+    word=random.choice(fruits)
+elif choice==2:
+    word=random.choice(animals)
+elif choice ==3:
+    word=random.choice(computerparts)
+elif choice ==4:
+    GameOn=False
 
 def guessFunction():
     global guess
@@ -77,7 +83,6 @@ gameOn=True
 tries=0
 letterGuessed=""
 selectWord()
-menu()
 while gameOn:
     
     guessFunction()
@@ -98,14 +103,6 @@ while gameOn:
     if countLetter == len(word):
         print ("\nyou guessed! ")
 
-def endgame():
-    print("*****************************************")
-    print("*                                       *")
-    print("*                                       *")
-    print("*             Game  Over                *")
-    print("*                                       *")
-    print("*                                       *")
-    print("*                                       *")
-    print("*                                       *")
-    print("*                                       *")
-    print("*****************************************")
+if countLetter == len(word):
+    points=(len(word))*5-2*(tries)
+    print('\nYay')
