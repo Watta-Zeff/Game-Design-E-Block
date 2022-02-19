@@ -97,7 +97,7 @@ while gameOn:
             countLetter +=1
         else:
             print("_", end=" ")
-    if tries >6:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                if tries >6:
         print("\n Sorry you ran out of chances ")
         #playGame() ask if they want to play again
     if countLetter == len(word):
