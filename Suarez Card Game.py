@@ -1,6 +1,7 @@
 #first let's import random since we will be shuffling
 
 from operator import iadd
+from pdb import Restart
 import random, os
 
 os.system('cls')
@@ -78,12 +79,13 @@ def splitdeck():
 
 TempPlyr1=[]
 TempPlyr2=[]
-
 def tempdecks(winner, i):
     winner.append(player1[i])
     winner.append(player2[i])
     player1.pop(i)
     player2.pop(i)
+    print(winner)
+
 
 #ask user to hit a key to release cards
 
@@ -94,21 +96,55 @@ def playgame():
     global plyr2
     global halfDeck
     global click
+    global GameOn
 
     for i in range (0,halfDeck):
-        click=input("Press a any key to get cards")
-        print("Player 1     Player 2")
-        print("     "+player1[i]+"      "+player2[i])
-        if player1[i]>player2[i]:
-            plyr1 +=1
-        elif player1[i]<player2[i]:
-            plyr2 +=1
-        print("Player I: "+str(plyr1)+"     Player II: "+ str(plyr2))
+        GameOn=True
+        while GameOn:
+            createdeck()
+            
+            showdeck()
 
-    if plyr1>plyr2:
-        print("Player one won the game "+str(plyr1)+" to "+str(plyr2))
-        
-    elif plyr2>plyr1:
-        print("Player two won the game "+str(plyr2)+" to "+str(plyr1))
-    else:
-        print("It's a tie")
+            shuffledeck()
+
+            splitdeck()
+
+            click=input("Press a any key to get cards")
+            os.system('cls')
+            if len(player1)==0 or len(player2)==0:
+                print("would you like to play again: ") 
+                PlayAgain=True
+                while(PlayAgain):
+                    restart=input('')
+                    if restart.lower()==str('yes'):
+                        print('restarting...')
+                        PlayAgain=False
+                    elif restart.lower()==str('no'):
+                        PlayAgain=False
+                    else:
+                        print('That was not an option. Please type \" yes\" or \"no\"')
+            GameOn=False
+            
+            print("Player 1     Player 2")
+            print("     "+player1[i]+"      "+player2[i])
+            if player1[i]>player2[i]:
+                plyr1 +=1
+                tempdecks(TempPlyr1,i)
+            elif player1[i]<player2[i]:
+                plyr2 +=1
+                tempdecks(TempPlyr2,i)
+            else:
+                print('tie')
+            print("Player I: "+str(plyr1)+"     Player II: "+ str(plyr2))
+
+        if plyr1>plyr2:
+            print("Player one won the game "+str(plyr1)+" to "+str(plyr2))
+            
+        elif plyr2>plyr1:
+            print("Player two won the game "+str(plyr2)+" to "+str(plyr1))
+        else:
+            print("It's a tie")
+
+    playgame()
+
+print('Game Over')

@@ -1,0 +1,35 @@
+
+    let Exploit = function () {
+        this.terms = {};
+        this.game = {};
+
+        this.interval = -1;
+        this.shop = {
+            'MPQ': [10, 100, 1e3, 1e4, 75e3, 3e5, 1e6, 1e7, 1e8],
+            'SB': [15, 150, 1500, 15e3, 115e3, 45e4, 15e5, 15e6, 2e8],
+            'Multi': [50, 300, 2e3, 12e3, 85e3, 7e5, 65e5, 65e6, 1e9],
+            'Powerups': [
+                {
+                    'name': 'Love Song',
+                    'price': 55
+                }, {
+                    'name': 'Clapinator',
+                    'price': 25
+                }, {
+                    'name': 'Icer',
+                    'price': 45
+                }, {
+                    'name': 'Deflector',
+                    'price': 60
+                }, {
+                    'name': 'Rebooter',
+                    'price': 1005
+                }, {
+                    'name': 'Gift',
+                    'price': 205
+                }, {
+                    'name': 'Subtractor',
+                    'price': 155
+                }, {
+                    'name': 'Reducer',
+                    'price': 135
