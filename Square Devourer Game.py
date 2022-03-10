@@ -13,6 +13,7 @@
 # K_d                   right square
 # K_w                   up square
 # K_s                   down square
+# K_SPACE               Jump
 #initialize pygame
 import os, random, time, pygame
 #initialize pygame
@@ -48,6 +49,14 @@ colors={'white':[255,255,255], 'red':[255,0,0], 'aqua':[102,153, 255],
 background= colors.get('blreen')
 sq_color=colors.get('purple')
 cr_color=colors.get('red')
+
+#Jump Code
+
+MAX=10
+jumpCount=MAX
+JUMP=False
+
+
 while check:
     screen.fill(background)
     for case in pygame.event.get():
@@ -55,17 +64,30 @@ while check:
             check=False
     
 
+
     keys=pygame.key.get_pressed() #this returns a list
     if keys[pygame.K_a] and square.x >=move:
         square.x -= move #substract 5 from the x value
     if keys[pygame.K_d] and square.x <WIDTH-(wbox+move):
         square.x += move
 
-    if keys[pygame.K_w] and square.y >= move:
-        square.y -= move
-    if keys[pygame.K_s] and square.y < HEIGHT - (hbox+move):
-        square.y += move
+    #Jumping Part
+    if not JUMP:
+        if keys[pygame.K_w] and square.y >= move:
+            square.y -= move
+        if keys[pygame.K_s] and square.y < HEIGHT - (hbox+move):
+            square.y += move
+        if keys[pygame.K_SPACE]:
+            JUMP=True
+    else:
+        if jumpCount >=-MAX:
+            square.y -= jumpCount*abs(jumpCount)/2
+            jumpCount-=1
+        else:
+            jumpCount=MAX
+            JUMP=False
 
+    
 
 #Finish circle
     keys=pygame.key.get_pressed()
@@ -81,12 +103,22 @@ while check:
     if keys[pygame.K_DOWN] and yc < HEIGHT - (rad+move) :
         yc +=move
 
-
-
     if keys[pygame.K_LEFT] and xc >=rad:
         xc -= move #substract 5 from the x value
+
+
+
+    CheckCollide = square.collidepoint((xc,yc))
+    if CheckCollide:
+        square.x=random.randint(wbox, WIDTH)
+        square.y=random.randint(hbox, HEIGHT)
+        rad +=move
+
+
     pygame.draw.rect(screen, sq_color, square)
     pygame.draw.circle(screen, cr_color, (xc,yc), rad)
 
     pygame.display.update()
     pygame.time.delay(10)
+
+
