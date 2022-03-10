@@ -58,13 +58,31 @@ while check:
     keys=pygame.key.get_pressed() #this returns a list
     if keys[pygame.K_a] and square.x >=move:
         square.x -= move #substract 5 from the x value
-    if keys[pygame.K_d] and square.x <WIDTH-wbox:
+    if keys[pygame.K_d] and square.x <WIDTH-(wbox+move):
         square.x += move
-    if keys[pygame.K_w]:
+
+    if keys[pygame.K_w] and square.y >= move:
         square.y -= move
-    if keys[pygame.K_s]:
-        square.y += move   
+    if keys[pygame.K_s] and square.y < HEIGHT - (hbox+move):
+        square.y += move
+
+
 #Finish circle
+    keys=pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and xc >=rad+ move:
+        xc -=move
+    
+    if keys[pygame.K_RIGHT] and xc < WIDTH - (rad+move):
+        xc +=move
+
+    if keys[pygame.K_UP] and yc >=rad+ move:
+        yc -=move
+    
+    if keys[pygame.K_DOWN] and yc < HEIGHT - (rad+move) :
+        yc +=move
+
+
+
     if keys[pygame.K_LEFT] and xc >=rad:
         xc -= move #substract 5 from the x value
     pygame.draw.rect(screen, sq_color, square)
