@@ -47,8 +47,18 @@ colors={'white':[255,255,255], 'red':[255,0,0], 'aqua':[102,153, 255],
 
 #Get colors
 background= colors.get('blreen')
-sq_color=colors.get('purple')
+
 cr_color=colors.get('red')
+
+colorCheck=True
+while colorCheck:
+    randColor=random.choice(list(colors))
+    if randColor == background:
+        sq_color= colors.get(randColor)
+    else:
+        colorCheck=False
+sq_color= colors.get(randColor)
+    
 
 #Jump Code
 
@@ -56,7 +66,7 @@ MAX=10
 jumpCount=MAX
 JUMP=False
 
-#
+#End Game
 
 while check:
     screen.fill(background)
