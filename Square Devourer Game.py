@@ -56,6 +56,7 @@ MAX=10
 jumpCount=MAX
 JUMP=False
 
+#
 
 while check:
     screen.fill(background)
@@ -64,7 +65,7 @@ while check:
             check=False
     
 
-
+#Keybinds
     keys=pygame.key.get_pressed() #this returns a list
     if keys[pygame.K_a] and square.x >=move:
         square.x -= move #substract 5 from the x value
@@ -107,17 +108,18 @@ while check:
         xc -= move #substract 5 from the x value
 
 
-
+#Check Collide
     CheckCollide = square.collidepoint((xc,yc))
     if CheckCollide:
         square.x=random.randint(wbox, WIDTH)
         square.y=random.randint(hbox, HEIGHT)
         rad +=move
 
-
+#Draw Rectangle and Circle
     pygame.draw.rect(screen, sq_color, square)
     pygame.draw.circle(screen, cr_color, (xc,yc), rad)
 
+#Display Screen
     pygame.display.update()
     pygame.time.delay(10)
 
