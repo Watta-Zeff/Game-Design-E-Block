@@ -49,14 +49,19 @@ colors={'white':[255,255,255], 'red':[255,0,0], 'aqua':[102,153, 255],
 background= colors.get('blreen')
 
 cr_color=colors.get('red')
+randColor=''
+def changeColor():
+    global randColor
+    colorCheck=True
+    while colorCheck:
+        randColor=random.choice(list(colors))
+        if randColor == background:
+            sq_color= colors.get(randColor)
+            
+        else:
+            colorCheck=False
 
-colorCheck=True
-while colorCheck:
-    randColor=random.choice(list(colors))
-    if randColor == background:
-        sq_color= colors.get(randColor)
-    else:
-        colorCheck=False
+changeColor()
 sq_color= colors.get(randColor)
     
 
@@ -123,6 +128,8 @@ while check:
     if CheckCollide:
         square.x=random.randint(wbox, WIDTH)
         square.y=random.randint(hbox, HEIGHT)
+        changeColor()
+        sq_color=colors.get(randColor)
         rad +=move
 
 #Draw Rectangle and Circle
