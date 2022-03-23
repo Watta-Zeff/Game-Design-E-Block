@@ -41,6 +41,24 @@ square=pygame.Rect(xs,ys,wbox,hbox)
 screen=pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption('Circle eats Square')
 
+#Menu / Instructions
+# pygame.init()
+# wind=pygame.display.set_mode((700,700))
+# wind=pygame.display.set_caption("Circle Eats Square Game")
+# #create different type of fonts
+
+# TITLE_FNT=pygame.font.SysFont('arial.ttf', 80)
+# MENU_FNT=pygame.font.SysFont('arial.ttf', 40)
+# INST_FNT=pygame.font.SysFont('arial.ttf', 30)
+# text=TITLE_FNT.render('Watta', 1, (125,45,30))
+# wind.fill((255,255,255))
+# wind.blit(text,(50,50))
+# text=INST_FNT.render("Write your instructions",1,(0,255,0))
+# wind.blit(text,(220,220))
+# pygame.display.update()
+
+# pygame.time.delay(1000)
+
 #define colors
 colors={'white':[255,255,255], 'red':[255,0,0], 'aqua':[102,153, 255],
 'orange':[255,85,0],'purple':[48,25,52],'navy':[5,31,64],'pink':[200,3,75], 'crimson':[168,26,26], 'gray':[96,96,96], 'blreen':[43,255,171] }
