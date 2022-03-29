@@ -13,11 +13,16 @@ score=123
 name='Watta'
 print(date.strftime('%m/%d/%Y'))
 
-ScoreLine=str(score)+" "+name+" "+date.strftime('%m/%d/%Y')
+ScoreLine=str(score)+" "+name+" "+date.strftime('%m/%d/%Y'+'\n')
 print(ScoreLine)
 #open file and write
 myFile=open('sce.txt', 'a')
 myFile.write(ScoreLine)
-
+myFile.close()
+myFile=open('sce.txt')
+lines=myFile.readline()
+print(lines)
+lines=myFile.readline()
+print(lines)
 myFile.close()
 

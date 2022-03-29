@@ -16,7 +16,6 @@
 # K_SPACE               Jump
 #initialize pygame
 import os, random, time, pygame
-from pickle import TRUE
 #initialize pygame
 pygame.init()
 
@@ -69,8 +68,9 @@ Exit = False
 
 
 #List for messages 
-MenuList=['Instructions', 'Settings', 'Level 1', 'Level 2', 'Level 3', 'Scoreboard', 'Exit']
-SettingList=['Screen Size', 'Circle Color', 'Background Color']
+MenuList=['Instructions', 'Settings', 'Level 1', 'Level 2', 'Level 3',
+ 'Scoreboard', 'Exit']
+SettingList=['Screen Size', 'Circle Color', 'Background Color','Sound']
 #Get colors
 background= colors.get('blreen')
 
@@ -121,30 +121,27 @@ def TitleMenu(Message):
 #Create square for menu
 xMs=50
 yMs=250
-wb=50
-hb=50
+wMb=50
+hMb=50
 
 menu_sq=colors.get('black')
 
-square=pygame.Rect(xMs,yMs,wbox,hbox)
+menu_sq=pygame.Rect(xs,ys,wbox,hbox)
 #This function uses a parameter
 def MainMenu(Mlist):
     txty=250
-    square.y=250
+    menu_sq.y=250
     for i in range (len(Mlist)):
         message=Mlist[i]
         text=INST_FNT.render(message,1,(0,0,0))
         screen.blit(text,(90,txty))
         pygame.draw.rect(screen, menu_sq, square )
-        square.y +=50
+        menu_sq.y +=50
         txty+=50
 
+    pygame.display.update()
 
-
-
-pygame.display.update()
-
-pygame.time.delay(1000)
+    pygame.time.delay(1000)
 
 
 
@@ -182,8 +179,9 @@ while check:
 
     if MAIN:
         screen.fill(background)
-        TitleMenu("Menu")
+        TitleMenu("MAIN")
         MainMenu(MenuList)
+
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             check=False
