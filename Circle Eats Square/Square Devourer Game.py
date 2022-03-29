@@ -130,7 +130,7 @@ square=pygame.Rect(xMs,yMs,wbox,hbox)
 #This function uses a parameter
 def MainMenu(Mlist):
     txty=250
-    menu_sq.y=250
+    square.y=250
     for i in range (len(Mlist)):
         message=Mlist[i]
         text=INST_FNT.render(message,1,(0,0,0))
@@ -183,9 +183,9 @@ while check:
     if MAIN:
         screen.fill(background)
         TitleMenu("Menu")
-    MainMenu(MenuList)
-    for case in pygame.event.get():
-        if case.type==pygame.QUIT:
+        MainMenu(MenuList)
+    for event in pygame.event.get():
+        if event.type==pygame.QUIT:
             check=False
 
 
@@ -193,14 +193,17 @@ while check:
 
 #Keybinds
     keys=pygame.key.get_pressed() #this returns a list
-    if case.type ==pygame.MOUSEBUTTONDOWN:
+    if event.type ==pygame.MOUSEBUTTONDOWN:
         mouse_pos=pygame.mouse.get_pos()
         print(mouse_pos)
-    if ((mouse_pos[0] >20 and mouse_pos [0] <60) and (mouse_pos[1] >250 and mouse_pos [1] <290)) or INST:
-        MAIN=False
-        screen.fill(background)
-        TitleMenu('Instructions')
-        INST=TRUE
+        if ((mouse_pos[0] >50 and mouse_pos [0] <80) and (mouse_pos[1] >250 and mouse_pos [1] <290)) or INST:
+            MAIN=False
+            screen.fill(background)
+            TitleMenu('Instructions')
+            INST=True
+            pygame.display.update()
+
+
 
 
 
