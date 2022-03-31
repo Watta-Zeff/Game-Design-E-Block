@@ -15,10 +15,10 @@
 # K_s                   down square
 # K_SPACE               Jump
 #initialize pygame
-import os, random, time, pygame
+import os, random, time, pygame, datetime, math
 #initialize pygame
 pygame.init()
-
+name=input("What is your name?")
 #Declare constants, variables, list, dictionaries, any object
 #scree size
 WIDTH=700
@@ -52,6 +52,9 @@ pygame.display.set_caption('Circle Eats Square')
 
 
 #define colors
+
+
+
 colors={'white':[255,255,255], 'red':[255,0,0], 'aqua':[102,153, 255],
 'orange':[255,85,0],'purple':[48,25,52],'navy':[5,31,64],'pink':[200,3,75], 'crimson':[168,26,26], 'gray':[96,96,96], 'blreen':[43,255,171], 'black':[0,0,0] }
 
@@ -75,6 +78,7 @@ SettingList=['Screen Size', 'Circle Color', 'Background Color','Sound']
 background= colors.get('blreen')
 
 cr_color=colors.get('red')
+
 randColor=''
 def changeColor():
     global randColor
@@ -91,6 +95,18 @@ changeColor()
 sq_color= colors.get(randColor)
     
 
+date=datetime.datetime.now()
+score=123
+
+
+def KeepScore(score):
+    date=datetime.datetime.now()
+    scoreLine=str(score)+"\t "+name+"\t "+date.strftime('%m/%d/%Y'+'\n')
+
+    myFile=open('sce.txt', 'a')
+    myFile.write(scoreLine)
+    myFile.close()
+
 
 
 
@@ -101,10 +117,13 @@ sq_color= colors.get(randColor)
 
 
 #create different type of fonts
-
-TITLE_FNT=pygame.font.SysFont('comicsans', 80)
-MENU_FNT=pygame.font.SysFont('arial.ttf', 40)
-INST_FNT=pygame.font.SysFont('arial.ttf', 40)
+def Fonts():
+    global TITLE_FNT
+    global MENU_FNT
+    global INST_FNT
+    TITLE_FNT=pygame.font.SysFont('comicsans', 80)
+    MENU_FNT=pygame.font.SysFont('arial.ttf', 40)
+    INST_FNT=pygame.font.SysFont('arial.ttf', 40)
 
 def TitleMenu(Message):
     text=TITLE_FNT.render(Message, 1, (125,45,30))
@@ -121,12 +140,12 @@ def TitleMenu(Message):
 #Create square for menu
 xMs=50
 yMs=250
-wMb=50
-hMb=50
+wb=50
+hb=50
 
-menu_sq=colors.get('black')
+menu_color=colors.get('black')
 
-menu_sq=pygame.Rect(xs,ys,wbox,hbox)
+menu_sq=pygame.Rect(xMs,yMs,wbox,hbox)
 #This function uses a parameter
 def MainMenu(Mlist):
     txty=250
@@ -135,7 +154,7 @@ def MainMenu(Mlist):
         message=Mlist[i]
         text=INST_FNT.render(message,1,(0,0,0))
         screen.blit(text,(90,txty))
-        pygame.draw.rect(screen, menu_sq, square )
+        pygame.draw.rect(screen, menu_color, square)
         menu_sq.y +=50
         txty+=50
 
@@ -179,12 +198,19 @@ while check:
 
     if MAIN:
         screen.fill(background)
-        TitleMenu("MAIN")
+        TitleMenu("MENU")
         MainMenu(MenuList)
+    if INST:
+        screen.fill(background)
+        TitleMenu("INSTRUCTIONS")
+    if INST:
+        if keys[pygame.K_ESCAPE]:
+            INST= 1
+            Main= False
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
-            check=False
+            run=False
 
 
 
