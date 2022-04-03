@@ -1,0 +1,9 @@
+
+Up Key---> Up circle
+Down Key---> Down circle
+Right Key---> Right circle
+Left Key---> Left circle
+A---> Left square
+D---> Right square
+W---> Up square
+S---> Down square
