@@ -10,7 +10,7 @@ import pygame, os, datetime
 os.system('cls')
 date=datetime.datetime.now()
 score=123
-name=
+name=''
 
 
 print(date.strftime('%m/%d/%Y'))

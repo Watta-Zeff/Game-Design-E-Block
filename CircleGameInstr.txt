@@ -1,9 +1,14 @@
+Goal: 
+Circle: Your objective is to eat the square.
+Square: Your objective is to evade the circle.
+How to Win:
+If the Circle eats the Square 5 times before the end of a 1 minute timer. Circle Wins
+If the Square evades the Circle for 1 minutes. Square Wins
+Controls:
+Up Key---> Up circle        W---> Up square
+Down Key---> Down circle    S---> Down square
+Right Key---> Right circle  D---> Right square
+Left Key---> Left circle    A---> Left square
 
-Up Key---> Up circle
-Down Key---> Down circle
-Right Key---> Right circle
-Left Key---> Left circle
-A---> Left square
-D---> Right square
-W---> Up square
-S---> Down square
+
+

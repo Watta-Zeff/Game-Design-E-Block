@@ -170,7 +170,7 @@ def instr():
 
     print("in instr")
 
-    myFile=open('ClassStuff\CircleEatsSquare\instructions.txt', 'r')
+    myFile=open('CircleGameInstr.txt', 'r')
 
     yi=150
 
@@ -208,7 +208,7 @@ def keepScore(score):
 
     # when y write it erases the prev
 
-    myFile=open('ClassStuff\sce.txt','a')
+    myFile=open('CircleGameInstr.txt','a')
 
     myFile.write(scoreLine)
 
