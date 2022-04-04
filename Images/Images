@@ -1,0 +1,62 @@
+import os, random, time, pygame, datetime, math
+
+os.system('cls')
+
+#initialize pygame
+
+pygame.init()
+
+
+
+WIDTH=700
+
+HEIGHT=700
+
+screen=pygame.display.set_mode((WIDTH,HEIGHT))
+
+pygame.display.set_caption('Level 2')
+
+Charizard=pygame.image.load('Images\Charizard Sprite.png')
+
+bg=pygame.image.load('Images\Background Image lol.png')
+
+screen.blit(bg,(0,0))
+
+screen.blit(Charizard,(200,200))
+pygame.display.update()
+pygame.time.delay(3000)
+
+move=5
+Check=True
+x=200
+y=200
+
+while Check:
+
+if keys[pygame.K_ESCAPE]:
+
+            run=False        
+
+        if keys[pygame.K_a] and square.x >=move:
+
+                square.x -= move #substract 5 from the x value
+
+        if keys[pygame.K_d] and square.x <WIDTH-wbox:
+
+            square.x += move  
+
+        #Jumping part
+
+        if not JUMP:
+
+            if keys[pygame.K_w]:
+
+                square.y -= move
+
+            if keys[pygame.K_s]:
+
+                square.y += move  
+
+            if keys[pygame.K_SPACE]:
+
+                JUMP=True

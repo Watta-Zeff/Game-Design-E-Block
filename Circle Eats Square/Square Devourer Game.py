@@ -22,6 +22,7 @@ name=input("What is your name? ")
 
 pygame.init()
 
+
  
 
 #Declare constants, variables, list, dictionaries, any object
@@ -58,7 +59,7 @@ SCORE=False
 
 MenuList=['Instructions','Settings', "Level 1","Level 2",'Level 3','Scoreboard','Exit']
 
-SettingList=['Screen Size','Backgrnd Color','Icon','']
+SettingList=['Screen Size','Background Color','Circle Icon','Square Icon']
 
 check=True #for the while loop
 
@@ -70,7 +71,7 @@ screen=pygame.display.set_mode((WIDTH,HEIGHT))
 
 pygame.display.set_caption('Circle Devours Square')
 
- 
+
 
 #define colors
 
@@ -420,7 +421,6 @@ while check:
 
             mouse_pos=pygame.mouse.get_pos()
 
-        print(mouse_pos)
 
     keys=pygame.key.get_pressed() #this returns a list
 
@@ -450,7 +450,7 @@ while check:
 
             MAIN=True
 
-            first=True
+            first=False
 
     if SETT:
 
@@ -472,7 +472,6 @@ while check:
 
         playGame()
 
-        print("I shld be t")
 
         LEVEL1=False
 
@@ -561,8 +560,6 @@ while check:
         screen.fill(background)
 
        
-
-        keepScore(121)
 
         text=INST_FNT.render("Make sure you update the score file", 1, BLACK)
 
