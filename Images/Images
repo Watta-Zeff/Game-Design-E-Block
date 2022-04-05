@@ -8,9 +8,9 @@ pygame.init()
 
 
 
-WIDTH=700
+WIDTH=960
 
-HEIGHT=700
+HEIGHT=540
 
 screen=pygame.display.set_mode((WIDTH,HEIGHT))
 
@@ -31,32 +31,3 @@ Check=True
 x=200
 y=200
 
-while Check:
-
-if keys[pygame.K_ESCAPE]:
-
-            run=False        
-
-        if keys[pygame.K_a] and square.x >=move:
-
-                square.x -= move #substract 5 from the x value
-
-        if keys[pygame.K_d] and square.x <WIDTH-wbox:
-
-            square.x += move  
-
-        #Jumping part
-
-        if not JUMP:
-
-            if keys[pygame.K_w]:
-
-                square.y -= move
-
-            if keys[pygame.K_s]:
-
-                square.y += move  
-
-            if keys[pygame.K_SPACE]:
-
-                JUMP=True
