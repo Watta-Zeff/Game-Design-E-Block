@@ -13,6 +13,8 @@
 # K_SPACE               Jump
 #initialize pygame
 import os, random, time, pygame, datetime, math
+from turtle import bgcolor
+from pickle import FALSE
 
 os.system('cls')
 
@@ -55,11 +57,21 @@ LEVEL3=False
 
 SCORE=False
 
+SC_SIZE=False
+
+BG_COLOR=False
+
+SPRITE=False
+
+SOUND_ON_OFF=False
+
 #List f messages
 
 MenuList=['Instructions','Settings', "Level 1","Level 2",'Level 3','Scoreboard','Exit']
 
 SettingList=['Screen Size','Background Color','Circle Icon','Square Icon']
+
+SC_sizeList=['1200 x 1200, 1000 x 1000, 800 x 800']
 
 check=True #for the while loop
 
@@ -393,6 +405,31 @@ def playGame():
 
         pygame.time.delay(10)
 
+def changeScreenSize(xm,ym):
+    global HEIGHT, WIDTH, screen
+    
+    if ((xm >20 and xm <80) and (ym >250 and ym <290))and MAIN :
+
+       HEIGHT=1000
+
+       WIDTH=1000
+    if ((xm >20 and xm <80) and (ym >300 and ym <330))and MAIN :
+
+       HEIGHT=800
+
+       WIDTH=800
+
+    if ((xm >20 and xm <80) and (ym >350 and ym <380))and MAIN :
+
+        HEIGHT=600
+        
+        WIDTH=600
+
+    screen=pygame.display.set_mode((WIDTH,HEIGHT))
+    screen.fill(bgcolor)
+
+    
+
 #sq_color=colors.get('navy')
 
 #Making a rand c f the square
@@ -405,8 +442,9 @@ keys=pygame.key.get_pressed()
 
 mouse_pos=(0,0)
 
- 
-
+xm=0
+ym=0
+sc=False
 first=True
 
 while check:
@@ -420,6 +458,9 @@ while check:
         if case.type ==pygame.MOUSEBUTTONDOWN:
 
             mouse_pos=pygame.mouse.get_pos()
+
+            xm= mouse_pos[0]
+            ym= mouse_pos[1]
 
 
     keys=pygame.key.get_pressed() #this returns a list
@@ -450,7 +491,7 @@ while check:
 
             MAIN=True
 
-            first=False
+            first=True
 
     if SETT:
 
@@ -503,59 +544,104 @@ while check:
 
             MAIN=True
 
-    if SCORE:
+    if SCORE and screCK:
 
         screen.fill(background)
 
         TitleMenu("SCOREBOARD")
 
         #call funct t print scres
-
+        ScreCk=False
+    
+    if SCORE:
         if keys[pygame.K_ESCAPE]:
 
             SCORE=False
-
             MAIN=True
+            screCK=True
+    
 
-    if ((mouse_pos[0] >20 and mouse_pos[0] <80) and (mouse_pos[1] >250 and mouse_pos[1] <290))or INST :
+        
+
+
+    if ((xm >20 and xm <80) and (ym >250 and ym <290))and MAIN :
 
         MAIN=False
 
         INST=True
 
-    if ((mouse_pos[0] >20 and mouse_pos[0] <80) and (mouse_pos[1] >300 and mouse_pos[1] <330))or SETT :
+    if ((xm >20 and xm <80) and (ym >300 and ym <330))and MAIN :
 
         MAIN=False
 
         SETT=True
 
-    if ((mouse_pos[0] >20 and mouse_pos[0] <80) and (mouse_pos[1] >350 and mouse_pos[1] <380))or LEVEL1 :
+    if ((xm >20 and xm <80) and (ym >350 and ym <380))and MAIN :
 
         MAIN=False
 
         LEVEL1=True  
 
-    if ((mouse_pos[0] >20 and mouse_pos[0] <80) and (mouse_pos[1] >400 and mouse_pos[1] <430))or LEVEL2 :
+    if ((xm >20 and xm <80) and (ym >400 and ym <430))and MAIN :
 
         MAIN=False
 
         LEVEL2=True  
 
-    if ((mouse_pos[0] >20 and mouse_pos[0] <80) and (mouse_pos[1] >450 and mouse_pos[1] <480))or LEVEL3 :
+    if ((xm >20 and xm <80) and (ym >450 and ym <480))and MAIN :
 
         MAIN=False
 
         LEVEL3=True  
 
-    if ((mouse_pos[0] >20 and mouse_pos[0] <80) and (mouse_pos[1] >500 and mouse_pos[1] <530))or SCORE :
+    if ((xm >20 and xm <80) and (ym >500 and ym <530))or SCORE :
 
         MAIN=False
 
         SCORE=True
 
+    if SETT and sc: 
+
+        if ((xm >20 and xm <80) and (ym >250 and ym <290)):
+
+            SETT=False
+
+            SC_SIZE=True
+
+        if SC_SIZE and xm >0:
+            screen.fill(background)
+            TitleMenu("Screen Size")
+            MainMenu(SC_sizeList)
+            changeScreenSize(xm,ym)
+            if keys[pygame.K_ESCAPE]:
+
+                SC_SIZE=False
+                MAIN=True
+        
+
+        if ((xm >20 and xm <80) and (ym >300 and ym <330)):
+
+            SETT=False
+        
+            BG_COLOR=True
+
+        if ((xm >20 and xm <80) and (ym >350 and ym <380)):
+
+            SETT=False
+
+            SPRITE=True
+
+        if ((xm >20 and xm <80) and (ym >400 and ym <430)):
+
+            SETT=False
+
+            SOUND_ON_OFF=True
+    else:
+        sc=True
+
        
 
-    if ((mouse_pos[0] >20 and mouse_pos[0] <80) and (mouse_pos[1] >550 and mouse_pos[1] <580)) :
+    if ((xm >20 and xm <80) and (ym >550 and ym <580)) :
 
         screen.fill(background)
 
