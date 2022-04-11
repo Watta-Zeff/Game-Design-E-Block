@@ -408,18 +408,18 @@ def playGame():
 def changeScreenSize(xm,ym):
     global HEIGHT, WIDTH, screen
     
-    if ((xm >20 and xm <80) and (ym >250 and ym <290))and MAIN :
+    if ((xm >20 and xm <80) and (ym >250 and ym <290))and SC_SIZE :
 
        HEIGHT=1000
 
        WIDTH=1000
-    if ((xm >20 and xm <80) and (ym >300 and ym <330))and MAIN :
+    if ((xm >20 and xm <80) and (ym >300 and ym <330))and SC_SIZE :
 
        HEIGHT=800
 
        WIDTH=800
 
-    if ((xm >20 and xm <80) and (ym >350 and ym <380))and MAIN :
+    if ((xm >20 and xm <80) and (ym >350 and ym <380))and SC_SIZE :
 
         HEIGHT=600
         
@@ -444,7 +444,7 @@ mouse_pos=(0,0)
 
 xm=0
 ym=0
-sc=False
+
 first=True
 
 while check:
@@ -544,26 +544,6 @@ while check:
 
             MAIN=True
 
-    if SCORE and screCK:
-
-        screen.fill(background)
-
-        TitleMenu("SCOREBOARD")
-
-        #call funct t print scres
-        ScreCk=False
-    
-    if SCORE:
-        if keys[pygame.K_ESCAPE]:
-
-            SCORE=False
-            MAIN=True
-            screCK=True
-    
-
-        
-
-
     if ((xm >20 and xm <80) and (ym >250 and ym <290))and MAIN :
 
         MAIN=False
@@ -600,7 +580,7 @@ while check:
 
         SCORE=True
 
-    if SETT and sc: 
+    if SETT: 
 
         if ((xm >20 and xm <80) and (ym >250 and ym <290)):
 
@@ -613,10 +593,11 @@ while check:
             TitleMenu("Screen Size")
             MainMenu(SC_sizeList)
             changeScreenSize(xm,ym)
+
             if keys[pygame.K_ESCAPE]:
 
                 SC_SIZE=False
-                MAIN=True
+                SETT=True
         
 
         if ((xm >20 and xm <80) and (ym >300 and ym <330)):
@@ -636,10 +617,8 @@ while check:
             SETT=False
 
             SOUND_ON_OFF=True
-    else:
-        sc=True
 
-       
+
 
     if ((xm >20 and xm <80) and (ym >550 and ym <580)) :
 
