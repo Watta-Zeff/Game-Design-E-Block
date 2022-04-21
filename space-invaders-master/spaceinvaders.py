@@ -22,16 +22,20 @@ BLUE = (80, 255, 239)
 PURPLE = (203, 0, 255)
 RED = (237, 28, 36)
 
-SCREEN = display.set_mode((800, 600))
+WIDTH=800
+HEIGHT=700
+SCREEN = display.set_mode((WIDTH, HEIGHT))
+
 FONT = FONT_PATH + 'space_invaders.ttf'
-#
+#Image array
 IMAGE_NAMES = ['ship', 'mystery',
              'enemy1_1', 'enemy1_2',
              'enemy2_1', 'enemy2_2',
              'enemy3_1', 'enemy3_2',
              'explosionblue', 'explosiongreen', 'explosionpurple',
              'laser', 'enemylaser']
-IMAGES = {name: image.load(IMAGE_PATH + '{}.png'.format(name)).convert_alpha()
+             #quick blitt
+IMAGES = {name: image.load(IMAGE_PATH + '{}.png'.format(name)).convert_alpha() 
           for name in IMAGE_NAMES}
 
 # Initial value for a new game:
@@ -40,6 +44,7 @@ ENEMY_DEFAULT_POSITION = 65
 ENEMY_MOVE_DOWN = 35
 
 
+#Ship movement
 class Ship(sprite.Sprite):
     def __init__(self):
         sprite.Sprite.__init__(self)
@@ -54,7 +59,7 @@ class Ship(sprite.Sprite):
             self.rect.x += self.speed
         game.screen.blit(self.image, self.rect)
 
-
+#Lase Movement
 class Bullet(sprite.Sprite):
     def __init__(self, xpos, ypos, direction, speed, filename, side):
         sprite.Sprite.__init__(self)
@@ -71,7 +76,7 @@ class Bullet(sprite.Sprite):
         if self.rect.y < 15 or self.rect.y > 600:
             self.kill()
 
-
+#Alien Movement
 class Enemy(sprite.Sprite):
     def __init__(self, row, column):
         sprite.Sprite.__init__(self)
@@ -151,6 +156,7 @@ class EnemiesGroup(sprite.Group):
 
             self.timer += self.moveTime
 
+#Alien Death
     def add_internal(self, *sprites):
         super(EnemiesGroup, self).add_internal(*sprites)
         for s in sprites:
@@ -196,7 +202,7 @@ class EnemiesGroup(sprite.Group):
                 self.leftAddMove += 5
                 is_column_dead = self.is_column_dead(self._leftAliveColumn)
 
-
+#Player Cover
 class Blocker(sprite.Sprite):
     def __init__(self, size, color, row, column):
         sprite.Sprite.__init__(self)
@@ -212,7 +218,7 @@ class Blocker(sprite.Sprite):
     def update(self, keys, *args):
         game.screen.blit(self.image, self.rect)
 
-
+#Mystery Alien
 class Mystery(sprite.Sprite):
     def __init__(self):
         sprite.Sprite.__init__(self)
@@ -226,7 +232,7 @@ class Mystery(sprite.Sprite):
         self.mysteryEntered = mixer.Sound(SOUND_PATH + 'mysteryentered.wav')
         self.mysteryEntered.set_volume(0.3)
         self.playSound = True
-
+#Time passed
     def update(self, keys, currentTime, *args):
         resetTimer = False
         passed = currentTime - self.timer
@@ -265,8 +271,8 @@ class EnemyExplosion(sprite.Sprite):
 
     @staticmethod
     def get_image(row):
-        img_colors = ['purple', 'blue', 'blue', 'green', 'green']
-        return IMAGES['explosion{}'.format(img_colors[row])]
+        Image_Colors = ['purple', 'blue', 'blue', 'green', 'green']
+        return IMAGES['explosion{}'.format(Image_Colors[row])]
 
     def update(self, current_time, *args):
         passed = current_time - self.timer

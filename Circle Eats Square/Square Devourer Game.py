@@ -30,7 +30,7 @@ pygame.init()
 
 #scree size
 
-WIDTH=700
+WIDTH=600
 HEIGHT=700
 xMs=50
 yMs=250
