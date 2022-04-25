@@ -28,7 +28,7 @@ def changeColor():
 
 changeColor()
 sq_color= colors.get(randColor)
-    
+
 pygame.init()
 wind=pygame.display.set_mode((WIDTH,HEIGHT))
 wind=pygame.display.set_caption("Circle Eats Square")

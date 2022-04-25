@@ -22,9 +22,11 @@ BLUE = (80, 255, 239)
 PURPLE = (203, 0, 255)
 RED = (237, 28, 36)
 
-WIDTH=800
+WIDTH=600
 HEIGHT=700
 SCREEN = display.set_mode((WIDTH, HEIGHT))
+
+transform.scale('space-invaders-master\Personal Images\png-transparent-explosion-fireball-image-file-formats-orange-explosion.png',(14,9))
 
 FONT = FONT_PATH + 'space_invaders.ttf'
 #Image array
@@ -35,7 +37,7 @@ IMAGE_NAMES = ['ship', 'mystery',
              'explosionblue', 'explosiongreen', 'explosionpurple',
              'laser', 'enemylaser']
              #quick blitt
-IMAGES = {name: image.load(IMAGE_PATH + '{}.png'.format(name)).convert_alpha() 
+IMAGES = {name: image.load(IMAGE_PATH + '{}.png'.format(name)).convert_alpha()
           for name in IMAGE_NAMES}
 
 # Initial value for a new game:
@@ -344,7 +346,7 @@ class SpaceInvaders(object):
         self.clock = time.Clock()
         self.caption = display.set_caption('Space Invaders')
         self.screen = SCREEN
-        self.background = image.load(IMAGE_PATH + 'background.jpg').convert()
+        self.background = image.load(IMAGE_PATH + 'Images\download.jpg').convert()
         self.startGame = False
         self.mainScreen = True
         self.gameOver = False
