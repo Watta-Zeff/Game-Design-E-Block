@@ -11,7 +11,7 @@ from random import choice
 
 BASE_PATH = abspath(dirname(__file__))
 FONT_PATH = BASE_PATH + '/fonts/'
-IMAGE_PATH = BASE_PATH + '/images/'
+IMAGE_PATH = BASE_PATH + '/Personal Images/'
 SOUND_PATH = BASE_PATH + '/sounds/'
 
 # Colors (R, G, B):
@@ -26,14 +26,13 @@ WIDTH=600
 HEIGHT=700
 SCREEN = display.set_mode((WIDTH, HEIGHT))
 
-transform.scale('space-invaders-master\Personal Images\png-transparent-explosion-fireball-image-file-formats-orange-explosion.png',(14,9))
 
 FONT = FONT_PATH + 'space_invaders.ttf'
 #Image array
 IMAGE_NAMES = ['ship', 'mystery',
-             'enemy1_1', 'enemy1_2',
-             'enemy2_1', 'enemy2_2',
-             'enemy3_1', 'enemy3_2',
+             'enemy1_1', 'enemy1_1',
+             'enemy2_1', 'enemy2_1',
+             'enemy3_1', 'enemy3_1',
              'explosionblue', 'explosiongreen', 'explosionpurple',
              'laser', 'enemylaser']
              #quick blitt
@@ -346,7 +345,7 @@ class SpaceInvaders(object):
         self.clock = time.Clock()
         self.caption = display.set_caption('Space Invaders')
         self.screen = SCREEN
-        self.background = image.load(IMAGE_PATH + 'Images\download.jpg').convert()
+        self.background = image.load(IMAGE_PATH + 'space-invaders-master\Personal Images\Starwars BG.png').convert()
         self.startGame = False
         self.mainScreen = True
         self.gameOver = False
