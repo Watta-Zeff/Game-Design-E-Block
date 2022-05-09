@@ -3,10 +3,13 @@
 # Created by Lee Robinson
 #Edited by Zeffaniah Sadler-Knight
 
+from traceback import print_list
+from webbrowser import get
 from pygame import *
 import sys
 from os.path import abspath, dirname
 from random import choice
+import turtle
 
 BASE_PATH = abspath(dirname(__file__))
 FONT_PATH = BASE_PATH + '/fonts/'
@@ -42,12 +45,15 @@ BLOCKERS_POSITION = 450
 ENEMY_DEFAULT_POSITION = 65  # Initial value for a new game
 ENEMY_MOVE_DOWN = 35
 
+#Mouse position
+mouseposition=mouse.get_cursor
+print(mouseposition)
 
 class Ship(sprite.Sprite):
     def __init__(self):
         sprite.Sprite.__init__(self)
         self.image = IMAGES['ship']
-        self.rect = self.image.get_rect(topleft=(375, 540))
+        self.rect = self.image.get_rect(topleft=(375, 540)) #(375, 540)
         self.speed = 5
 
     def update(self, keys, *args):
@@ -310,7 +316,6 @@ class ShipExplosion(sprite.Sprite):
         elif 900 < passed:
             self.kill()
 
-#Starting Position for ship
 class Life(sprite.Sprite):
     def __init__(self, xpos, ypos):
         sprite.Sprite.__init__(self)
@@ -364,7 +369,8 @@ class SpaceInvaders(object):
         self.life1 = Life(715, 4)
         self.life2 = Life(742, 4)
         self.life3 = Life(769, 4)
-        self.livesGroup = sprite.Group(self.life1, self.life2, self.life3)
+        self.life4 = Life(791, 4)
+        self.livesGroup = sprite.Group(self.life1, self.life2, self.life3, self.life4)
 
     def reset(self, score):
         self.player = Ship()
