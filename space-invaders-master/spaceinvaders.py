@@ -1,20 +1,19 @@
 
 # Space Invaders
-# Created by Zeffaniah Sadler-Knight
+# Created by Lee Robinson
+#Edited by Zeffaniah Sadler-Knight
 
-#import everything:
 from pygame import *
 import sys
-#returns the path name to the path passed as a parameter to this function:
 from os.path import abspath, dirname
 from random import choice
 
 BASE_PATH = abspath(dirname(__file__))
 FONT_PATH = BASE_PATH + '/fonts/'
-IMAGE_PATH = BASE_PATH + '/Personal Images/'
+IMAGE_PATH = BASE_PATH + '/images/'
 SOUND_PATH = BASE_PATH + '/sounds/'
 
-# Colors (R, G, B):
+# Colors (R, G, B)
 WHITE = (255, 255, 255)
 GREEN = (78, 255, 87)
 YELLOW = (241, 255, 0)
@@ -22,30 +21,28 @@ BLUE = (80, 255, 239)
 PURPLE = (203, 0, 255)
 RED = (237, 28, 36)
 
+#Create Height and Width
+HEIGHT=800
 WIDTH=600
-HEIGHT=700
-SCREEN = display.set_mode((WIDTH, HEIGHT))
-
-
+#Make Screen
+SCREEN = display.set_mode((HEIGHT, WIDTH))
 FONT = FONT_PATH + 'space_invaders.ttf'
-#Image array
-IMAGE_NAMES = ['ship', 'mystery',
-             'enemy1_1', 'enemy1_1',
-             'enemy2_1', 'enemy2_1',
-             'enemy3_1', 'enemy3_1',
+#Switched Images to fit new theme
+IMG_NAMES = ['ship', 'mystery',
+             'enemy1_1', 'enemy1_2',
+             'enemy2_1', 'enemy2_2',
+             'enemy3_1', 'enemy3_2',
              'explosionblue', 'explosiongreen', 'explosionpurple',
              'laser', 'enemylaser']
-             #quick blitt
+#Format images to make calling images easier
 IMAGES = {name: image.load(IMAGE_PATH + '{}.png'.format(name)).convert_alpha()
-          for name in IMAGE_NAMES}
+          for name in IMG_NAMES}
 
-# Initial value for a new game:
 BLOCKERS_POSITION = 450
-ENEMY_DEFAULT_POSITION = 65  
+ENEMY_DEFAULT_POSITION = 65  # Initial value for a new game
 ENEMY_MOVE_DOWN = 35
 
 
-#Ship movement
 class Ship(sprite.Sprite):
     def __init__(self):
         sprite.Sprite.__init__(self)
@@ -60,7 +57,7 @@ class Ship(sprite.Sprite):
             self.rect.x += self.speed
         game.screen.blit(self.image, self.rect)
 
-#Lase Movement
+
 class Bullet(sprite.Sprite):
     def __init__(self, xpos, ypos, direction, speed, filename, side):
         sprite.Sprite.__init__(self)
@@ -77,7 +74,7 @@ class Bullet(sprite.Sprite):
         if self.rect.y < 15 or self.rect.y > 600:
             self.kill()
 
-#Alien Movement
+
 class Enemy(sprite.Sprite):
     def __init__(self, row, column):
         sprite.Sprite.__init__(self)
@@ -157,7 +154,6 @@ class EnemiesGroup(sprite.Group):
 
             self.timer += self.moveTime
 
-#Alien Death
     def add_internal(self, *sprites):
         super(EnemiesGroup, self).add_internal(*sprites)
         for s in sprites:
@@ -203,7 +199,7 @@ class EnemiesGroup(sprite.Group):
                 self.leftAddMove += 5
                 is_column_dead = self.is_column_dead(self._leftAliveColumn)
 
-#Player Cover
+#Cover for ship
 class Blocker(sprite.Sprite):
     def __init__(self, size, color, row, column):
         sprite.Sprite.__init__(self)
@@ -219,7 +215,7 @@ class Blocker(sprite.Sprite):
     def update(self, keys, *args):
         game.screen.blit(self.image, self.rect)
 
-#Mystery Alien
+#Random Mystery Sprite
 class Mystery(sprite.Sprite):
     def __init__(self):
         sprite.Sprite.__init__(self)
@@ -233,7 +229,7 @@ class Mystery(sprite.Sprite):
         self.mysteryEntered = mixer.Sound(SOUND_PATH + 'mysteryentered.wav')
         self.mysteryEntered.set_volume(0.3)
         self.playSound = True
-#Time passed
+
     def update(self, keys, currentTime, *args):
         resetTimer = False
         passed = currentTime - self.timer
@@ -272,8 +268,8 @@ class EnemyExplosion(sprite.Sprite):
 
     @staticmethod
     def get_image(row):
-        Image_Colors = ['purple', 'blue', 'blue', 'green', 'green']
-        return IMAGES['explosion{}'.format(Image_Colors[row])]
+        img_colors = ['purple', 'blue', 'blue', 'green', 'green']
+        return IMAGES['explosion{}'.format(img_colors[row])]
 
     def update(self, current_time, *args):
         passed = current_time - self.timer
@@ -314,7 +310,7 @@ class ShipExplosion(sprite.Sprite):
         elif 900 < passed:
             self.kill()
 
-
+#Starting Position for ship
 class Life(sprite.Sprite):
     def __init__(self, xpos, ypos):
         sprite.Sprite.__init__(self)
@@ -325,7 +321,7 @@ class Life(sprite.Sprite):
     def update(self, *args):
         game.screen.blit(self.image, self.rect)
 
-
+#
 class Text(object):
     def __init__(self, textFont, size, message, color, xpos, ypos):
         self.font = font.Font(textFont, size)
@@ -342,20 +338,22 @@ class SpaceInvaders(object):
         #   ALSA lib pcm.c:7963:(snd_pcm_recover) underrun occurred
         mixer.pre_init(44100, -16, 1, 4096)
         init()
+        bg2=image.load(IMAGE_PATH + 'star-wars-death-star-at-at-space.jpg')
+        bg2=transform.scale(bg2,(HEIGHT,WIDTH))
         self.clock = time.Clock()
-        self.caption = display.set_caption('Space Invaders')
+        self.caption = display.set_caption('Star Invaders')
         self.screen = SCREEN
-        self.background = image.load(IMAGE_PATH + 'space-invaders-master\Personal Images\Starwars BG.png').convert()
+        self.background = bg2.convert()
         self.startGame = False
         self.mainScreen = True
         self.gameOver = False
         # Counter for enemy starting position (increased each new round)
         self.enemyPosition = ENEMY_DEFAULT_POSITION
-        self.titleText = Text(FONT, 50, 'Space Invaders', WHITE, 164, 155)
-        self.titleText2 = Text(FONT, 25, 'Press any key to continue', WHITE,
+        self.titleText = Text(FONT, 60, 'Star Invaders', WHITE, 164, 155)
+        self.titleText2 = Text(FONT, 30, 'Press any key to continue', WHITE,
                                201, 225)
-        self.gameOverText = Text(FONT, 50, 'Game Over', WHITE, 250, 270)
-        self.nextRoundText = Text(FONT, 50, 'Next Round', WHITE, 240, 270)
+        self.gameOverText = Text(FONT, 50, 'Game Over', RED, 250, 270)
+        self.nextRoundText = Text(FONT, 50, 'Next Round', GREEN, 240, 270)
         self.enemy1Text = Text(FONT, 25, '   =   10 pts', GREEN, 368, 270)
         self.enemy2Text = Text(FONT, 25, '   =  20 pts', BLUE, 368, 320)
         self.enemy3Text = Text(FONT, 25, '   =  30 pts', PURPLE, 368, 370)
@@ -363,9 +361,9 @@ class SpaceInvaders(object):
         self.scoreText = Text(FONT, 20, 'Score', WHITE, 5, 5)
         self.livesText = Text(FONT, 20, 'Lives ', WHITE, 640, 5)
 
-        self.life1 = Life(715, 3)
-        self.life2 = Life(742, 3)
-        self.life3 = Life(769, 3)
+        self.life1 = Life(715, 4)
+        self.life2 = Life(742, 4)
+        self.life3 = Life(769, 4)
         self.livesGroup = sprite.Group(self.life1, self.life2, self.life3)
 
     def reset(self, score):
@@ -389,6 +387,7 @@ class SpaceInvaders(object):
         self.makeNewShip = False
         self.shipAlive = True
 
+#Cover
     def make_blockers(self, number):
         blockerGroup = sprite.Group()
         for row in range(4):
@@ -398,7 +397,7 @@ class SpaceInvaders(object):
                 blocker.rect.y = BLOCKERS_POSITION + (row * blocker.height)
                 blockerGroup.add(blocker)
         return blockerGroup
-
+# All sounds
     def create_audio(self):
         self.sounds = {}
         for sound_name in ['shoot', 'shoot2', 'invaderkilled', 'mysterykilled',
