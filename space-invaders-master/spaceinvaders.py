@@ -226,7 +226,7 @@ class Mystery(sprite.Sprite):
         self.moveTime = 25000
         self.direction = 1
         self.timer = time.get_ticks()
-        self.mysteryEntered = mixer.Sound(SOUND_PATH + 'mysteryentered.wav')
+        self.mysteryEntered = mixer.Sound(SOUND_PATH + 'Imperial March.wav')
         self.mysteryEntered.set_volume(0.3)
         self.playSound = True
 
@@ -315,7 +315,7 @@ class Life(sprite.Sprite):
     def __init__(self, xpos, ypos):
         sprite.Sprite.__init__(self)
         self.image = IMAGES['ship']
-        self.image = transform.scale(self.image, (23, 23))
+        self.image = transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect(topleft=(xpos, ypos))
 
     def update(self, *args):
