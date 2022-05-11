@@ -10,6 +10,10 @@ import sys
 from os.path import abspath, dirname
 from random import choice
 import turtle
+import datetime
+import random
+import math
+import os
 
 BASE_PATH = abspath(dirname(__file__))
 FONT_PATH = BASE_PATH + '/fonts/'
@@ -23,6 +27,9 @@ YELLOW = (241, 255, 0)
 BLUE = (80, 255, 239)
 PURPLE = (203, 0, 255)
 RED = (237, 28, 36)
+
+os.system('cls')
+name=input("What is your name? ")
 
 #Create Height and Width
 HEIGHT=800
@@ -647,7 +654,18 @@ class SpaceInvaders(object):
             elif self.gameOver:
 
                 print(self.score)
-                
+                ScoreLine=str(self.score)+" "+name+" "+date.strftime('%m/%d/%Y'+'\n')
+                print(ScoreLine)
+                #open file and write
+                myFile=open('space-invaders-master\Scoreboard.txt', 'a')
+                myFile.write(ScoreLine)
+                myFile.close()
+                myFile=open('space-invaders-master\Scoreboard.txt')
+                lines=myFile.readline()
+                print(lines)
+                lines=myFile.readline()
+                print(lines)
+                myFile.close()
                 currentTime = time.get_ticks()
                 # Reset enemy starting position
                 self.enemyPosition = ENEMY_DEFAULT_POSITION
