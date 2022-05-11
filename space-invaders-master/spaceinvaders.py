@@ -40,7 +40,7 @@ IMG_NAMES = ['ship', 'mystery',
 #Format images to make calling images easier
 IMAGES = {name: image.load(IMAGE_PATH + '{}.png'.format(name)).convert_alpha()
           for name in IMG_NAMES}
-
+IMAGES['ship']=transform.scale(IMAGES['ship'],(50,50))
 BLOCKERS_POSITION = 450
 ENEMY_DEFAULT_POSITION = 65  # Initial value for a new game
 ENEMY_MOVE_DOWN = 35
@@ -320,7 +320,7 @@ class Life(sprite.Sprite):
     def __init__(self, xpos, ypos):
         sprite.Sprite.__init__(self)
         self.image = IMAGES['ship']
-        self.image = transform.scale(self.image, (20, 20))
+        self.image = transform.scale(self.image, (30, 20))
         self.rect = self.image.get_rect(topleft=(xpos, ypos))
 
     def update(self, *args):
@@ -645,11 +645,14 @@ class SpaceInvaders(object):
                     self.make_enemies_shoot()
 
             elif self.gameOver:
+
+                print(self.score)
+                
                 currentTime = time.get_ticks()
                 # Reset enemy starting position
                 self.enemyPosition = ENEMY_DEFAULT_POSITION
                 self.create_game_over(currentTime)
-
+            
             display.update()
             self.clock.tick(60)
 

@@ -99,7 +99,7 @@ def TitleMenu(Message):
 
 def MainMenu(Mlist):
 
-    txty=24
+    txty=243
     squareM.y=250
     for i in range(len(Mlist)):
         message=Mlist[i]

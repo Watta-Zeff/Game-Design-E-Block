@@ -1,0 +1,10 @@
+Goal: 
+1. Last as Long as possible
+2. Get as many points as possible
+Warning:
+As you complete levels
+the game will get progressivelly harder
+Controls:
+Right Key---> Right
+Left Key---> Left
+Space Key---> Fire Shots
