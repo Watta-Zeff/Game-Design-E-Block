@@ -42,6 +42,8 @@ SettingList=['Screen Size','Background Color','Icon']
 sizeList=['800 x 600','700 x 600']
 check=True #for the while loop
 
+score = 0
+
 #create screen
 screen=pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption('Circle eats Square')
@@ -102,6 +104,7 @@ def instr():
         pygame.time.delay(50)
         yi+=50
     myFile.close()
+
 
 def keepScore(score):
     date=datetime.datetime.now()
@@ -169,7 +172,7 @@ def ChangeBgColor():
 
 
 keys=pygame.key.get_pressed()
-mouse_pos=(0,0)
+# mouse_pos=(0,0)
 screCk=True
 first=True
 xm=0 
@@ -185,9 +188,10 @@ while check:
             check=False
         if case.type ==pygame.MOUSEBUTTONDOWN:
             mouse_pos=pygame.mouse.get_pos()
+            print(mouse_pos)
             xm= mouse_pos[0]
             ym= mouse_pos[1]
-        # print(mouse_pos)
+        
     keys=pygame.key.get_pressed() #this returns a list
     if MAIN:
         screen.fill(background)
@@ -215,7 +219,6 @@ while check:
             f_SEET=True
     if LEV_I:
         screen.fill(background)
-        playGame()
         LEV_I=False
         MAIN=True
         xm=0
@@ -246,7 +249,7 @@ while check:
     if ((xm >20 and xm <80) and (ym >250 and ym <290)) and SETT and set_first:  
         screen.fill(background)
         TitleMenu("Screen Size")
-        MainMenu(sizeList )
+        MainMenu(sizeList)
         sc_size=True
         set_first=False
         f_SEET=True
@@ -264,19 +267,15 @@ while check:
     if ((xm >20 and xm <80) and (ym >300 and ym <330))and SETT and set_first:
         bg_color=True
         TitleMenu("Background Color")
-        set_first=False
-    if bg_color and xm>0:
         ChangeBgColor()
-        TitleMenu("Background Color")
-        if keys[pygame.K_ESCAPE]:
-            c_first=True
-            set_first=True
 
-
-
-    if ((xm >20 and xm <80) and (ym >550 and ym <580)) :
+        set_first=False
+    if ((xm >20 and xm <80) and (ym >400 and ym <430)) :
+        TitleMenu("Scoreboard")
         screen.fill(background)
         keepScore(score)
+
+    
         text=INST_FNT.render("Make sure you update the score file", 1, BLACK)
         screen.blit(text, (40,200))
         text=INST_FNT.render("before you exit", 1, BLACK)
