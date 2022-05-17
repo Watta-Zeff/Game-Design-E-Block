@@ -855,7 +855,6 @@ while check:
             MAIN=True
             first=True
     if SETT and f_SEET:
-        SCREEN.fill(background)
         TitleMenu("SETTINGS")
         MainMenu(SettingList)
         f_SEET=False
@@ -918,10 +917,7 @@ while check:
         MainMenu(sizeList )
         if keys[K_ESCAPE]:
             sc_size=False
-            set_first=True
-    if ((xm >20 and xm <80) and (ym >300 and ym <330))and SETT:
-        background=randColor
-
+            set_first=True      
   
     if ((xm >20 and xm <80) and (ym >400 and ym <430)) and SCORE :
         TitleMenu("Scoreboard")
